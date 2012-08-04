@@ -5,6 +5,7 @@ import markov, sys, time
 markovLength = 3
 source_file = '/home/jk/Code/jambot/corpora/all.txt'
 
+# optional command line parameters: path/to/corpus_file.txt n-gram_size
 if len (sys.argv) >= 2:
 	source_file = sys.argv[1]
 if len (sys.argv) == 3:
@@ -20,7 +21,7 @@ def genTweet():
 	return sentence
 
 while True:
-	results = tw.twitter.search(q="@jmkp",since_id=tw.last_id_replied)['results']
+	results = tw.twitter.search(q="@"+tw.handle,since_id=tw.last_id_replied)['results']
 	if not results:
 		print "Nobody's talking to me...\n"
 	for result in results:
@@ -37,4 +38,4 @@ while True:
 	print sentence+"\n"
 	tw.poster.statuses.update(status=sentence)
 	print "Sweet Dreams...\n"
-	time.sleep(10800)
+	time.sleep(10800) # waits for three hours
