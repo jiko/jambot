@@ -3,7 +3,7 @@ import init_twit as tw
 import markov, sys, time
 
 markovLength = 3
-source_file = '/home/jk/Code/jambot/corpora/all.txt'
+source_file = '/home/jk/Code/jambot/corpora/corpus.txt'
 
 # optional command line parameters: path/to/corpus_file.txt n-gram_size
 if len (sys.argv) >= 2:
@@ -16,7 +16,7 @@ if (markov.mapping=={}):
 
 def genTweet():
 	sentence = markov.genSentence(markovLength)
-	while (len (sentence) > 130):
+	while (len (sentence) > 130 or len(sentence) < 30):
 		sentence = markov.genSentence(markovLength)
 	return sentence
 
@@ -32,7 +32,8 @@ while True:
 		sentence = genTweet()
 		sentence = "@"+asker+" "+sentence
 		print status_id+": "+sentence+"\n"
-		tw.last_id_replied = status_id
+		if tw.last_id_replied < status_id:
+			tw.last_id_replied = status_id
 		tw.poster.statuses.update(status=sentence,in_reply_to_status_id=status_id)
 	sentence = genTweet()
 	print sentence+"\n"
