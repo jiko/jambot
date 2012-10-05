@@ -9,4 +9,4 @@ Requires the 'twitter' pypi package: pip install twitter
 
 See init_twit.py for info on setting up your Twitter application.
 
-For the story of this projects inception and some rumination on the results, see my essay "[Programmatic Text Generation and Me](http://jameskoppen.com/spamdada.html)".
+For the story of this project's inception, see my essay "[Programmatic Text Generation and Me](http://jameskoppen.com/spamdada.html)".
