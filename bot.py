@@ -3,6 +3,7 @@ import init_twit as tw
 import markov, sys, time
 
 markovLength = 3
+# change to the absolute path to your corpus file so you can run from anywhere
 source_file = '/home/jk/Code/jambot/corpora/corpus.txt'
 
 # optional command line parameters: path/to/corpus_file.txt n-gram_size
