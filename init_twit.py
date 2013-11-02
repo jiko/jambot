@@ -19,7 +19,7 @@ poster = Twitter(
 	auth=OAuth(
 		oauth_token, oauth_token_secret, CONSUMER_KEY, CONSUMER_SECRET),
 		secure=True,
-		api_version='1',
+		api_version='1.1',
 		domain='api.twitter.com')
 
 # get the status_id of the last tweet to which you replied
