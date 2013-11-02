@@ -8,7 +8,7 @@ CONSUMER_KEY='PUiHBJAy0QhCnpq3KytncA'
 CONSUMER_SECRET='9JVE1dOJOzx4HzPNByCaNSfkxWr5LbN1QOkOhJWZc'
 
 # path to where your oauth credentials are stored 
-oauth_filename = os.environ.get('HOME', '') + os.sep + '.twitter_oauth'
+oauth_filename = os.path.dirname(__file__) + os.sep + '.twitter_oauth'
 # use the function 'from twitter.oauth import write_token_file' to create this file
 oauth_token, oauth_token_secret = read_token_file(oauth_filename)
 
