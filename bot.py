@@ -13,7 +13,7 @@ if len (sys.argv) == 3:
 	markovLength = int (sys.argv[2])
 
 if (markov.mapping=={}):
-	markov.buildMapping(markov.wordlist(source_file),markovLength)
+	markov.buildMapping(markov.wordlist(source_file), markovLength)
 
 def genTweet():
 	sentence = markov.genSentence(markovLength)
@@ -22,11 +22,11 @@ def genTweet():
 	return sentence
 
 while True:
-	results = tw.twitter.search(q="@"+tw.handle,since_id=tw.last_id_replied)['results']
+	results = tw.twitter.search(q="@"+tw.handle, since_id=tw.last_id_replied)['results']
 	if not results:
 		print "Nobody's talking to me...\n"
 	for result in results:
-		question = result['text'].replace('@jmkp','')
+		question = result['text'].replace("@"+tw.handle, '')
 		asker = result['from_user']
 		status_id = str(result['id'])
 		print asker + " said '" + question + "'\n"
@@ -35,7 +35,7 @@ while True:
 		print status_id+": "+sentence+"\n"
 		if tw.last_id_replied < status_id:
 			tw.last_id_replied = status_id
-		tw.poster.statuses.update(status=sentence,in_reply_to_status_id=status_id)
+		tw.poster.statuses.update(status=sentence, in_reply_to_status_id=status_id)
 	sentence = genTweet()
 	print sentence+"\n"
 	tw.poster.statuses.update(status=sentence)
